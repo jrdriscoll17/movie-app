@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ActorsController < ApplicationController
   skip_before_action :require_authenticated_user, only: %i[index show]
 

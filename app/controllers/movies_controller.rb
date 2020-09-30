@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 class MoviesController < ApplicationController
   skip_before_action :require_authenticated_user, only: %i[index show]
-  
+
   def index
     @movies = Movie.all
   end
-  
+
   def new
     @movie = Movie.new
   end

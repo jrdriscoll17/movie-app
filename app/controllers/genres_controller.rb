@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 class GenresController < ApplicationController
   skip_before_action :require_authenticated_user, only: %i[index show]
-  
+
   def index
     @genres = Genre.all
   end
-  
+
   def new
     @genre = Genre.new
   end
