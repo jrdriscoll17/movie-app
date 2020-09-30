@@ -1,14 +1,11 @@
 # frozen_string_literal: true
 
 class Movie < ApplicationRecord
-  has_many :movie_genres
-  has_many :genres, through: :movie_genres
-
-  has_many :movie_actors
-  has_many :actors, through: :movie_actors
-
   has_many :reviews
   has_many :users, through: :reviews
 
-  validates :name, presence: true
+  validates :title, presence: true
+  validates :title, uniqueness: true
+
+  accepts_nested_attributes_for :reviews
 end

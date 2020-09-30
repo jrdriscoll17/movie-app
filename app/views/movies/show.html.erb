@@ -1,0 +1,10 @@
+<%= @movie.title %>
+<%= form_for @movie do |f| %>
+  <%= f.fields_for :reviews do |r| %>
+    <%= r.label :rating %>
+    <%= r.number_field :rating %>
+    <%= r.label :content %>
+    <%= r.text_area :content %>
+    <%= r.submit%>
+  <% end %>
+<% end %>

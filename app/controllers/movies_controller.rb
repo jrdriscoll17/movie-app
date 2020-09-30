@@ -9,6 +9,7 @@ class MoviesController < ApplicationController
 
   def new
     @movie = Movie.new
+    @movie.reviews.build
   end
 
   def create
@@ -21,24 +22,24 @@ class MoviesController < ApplicationController
   end
 
   def show
-    # Find what params looks like to figure out how to locate the movie
+    @movie = Movie.find_by_id(params[:id])
   end
 
   def edit
-    # Find what params looks like to figure out how to locate the movie
+    @movie = Movie.find_by_id(params[:id])
   end
 
   def update
-    # Find what params looks like to figure out how to locate the movie
+    @movie = Movie.find_by_id(params[:id])
   end
 
   def destroy
-    # Find what params looks like to figure out how to locate the movie
+    @movie = Movie.find_by_id(params[:id])
   end
 
   private
 
   def movie_params
-    params.require(:movie).permit(:title)
+    params.require(:movie).permit(:title, reviews_attributes: %i[rating content])
   end
 end
