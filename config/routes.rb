@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :users, only: %i[new create show] do
     resources :reviews
   end
-  resources :genres
+  resources :genres, only: %i[index show]
   resources :actors
   resources :movies
 

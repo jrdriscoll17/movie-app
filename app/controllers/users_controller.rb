@@ -9,6 +9,7 @@ class UsersController < ApplicationController
 
   def create
     # Remember to add flash message display in users/new view
+    byebug
     if (user = User.create(user_params))
       session[:user_id] = user.id
       redirect_to user_path(user)

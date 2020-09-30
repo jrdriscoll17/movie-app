@@ -20,6 +20,10 @@ class MoviesController < ApplicationController
     end
   end
 
+  def show
+    # Find what params looks like to figure out how to locate the movie
+  end
+
   def edit
     # Find what params looks like to figure out how to locate the movie
   end
