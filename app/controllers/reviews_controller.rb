@@ -1,4 +1,6 @@
 class ReviewsController < ApplicationController
+  before_action :find_review, only: %i[edit update]
+
   def new
     @review = Review.new
   end
@@ -7,12 +9,9 @@ class ReviewsController < ApplicationController
     Review.create(review_params)
   end
 
-  def edit
-    @review = Review.find_by_id(params[:id])
-  end
+  def edit; end
 
   def update
-    @review = Review.find_by_id(params[:id])
     @review.update(review_params)
     redirect_to user_path(@review.user)
   end
@@ -21,5 +20,9 @@ class ReviewsController < ApplicationController
 
   def review_params
     params.require(:review).permit(:rating, :content)
+  end
+
+  def find_review
+    @review = Review.find_by_id(params[:id])
   end
 end
