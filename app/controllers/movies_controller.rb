@@ -14,6 +14,7 @@ class MoviesController < ApplicationController
 
   def create
     # Remember to add flash message display in users/new view
+    # byebug
     if (movie = Movie.create(movie_params))
       redirect_to movie_path(movie)
     else
@@ -40,6 +41,6 @@ class MoviesController < ApplicationController
   private
 
   def movie_params
-    params.require(:movie).permit(:title, reviews_attributes: %i[rating content])
+    params.require(:movie).permit(:title, reviews_attributes: %i[rating content user_id])
   end
 end

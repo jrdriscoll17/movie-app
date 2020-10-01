@@ -1,10 +1,9 @@
 <%= @movie.title %>
-<%= form_for @movie do |f| %>
-  <%= f.fields_for :reviews do |r| %>
-    <%= r.label :rating %>
-    <%= r.number_field :rating %>
-    <%= r.label :content %>
-    <%= r.text_area :content %>
-    <%= r.submit%>
+<% @movie.reviews.each do |review| %>
+  <%= review.user.username %>
+  <%= review.rating %>
+  <%= review.content %>
+  <% if review.user == current_user %>
+    <%= button_to 'edit', edit_user_review_path(review.user, review), method: :get %>
   <% end %>
 <% end %>
