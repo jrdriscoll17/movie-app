@@ -2,6 +2,7 @@
 
 class MoviesController < ApplicationController
   skip_before_action :require_authenticated_user, only: %i[index show]
+  before_action :find_movie, only: %i[show edit update destroy]
 
   def index
     @movies = Movie.all
@@ -21,25 +22,21 @@ class MoviesController < ApplicationController
     end
   end
 
-  def show
-    @movie = Movie.find_by_id(params[:id])
-  end
+  def show; end
 
-  def edit
-    @movie = Movie.find_by_id(params[:id])
-  end
+  def edit; end
 
-  def update
-    @movie = Movie.find_by_id(params[:id])
-  end
+  def update; end
 
-  def destroy
-    @movie = Movie.find_by_id(params[:id])
-  end
+  def destroy; end
 
   private
 
   def movie_params
     params.require(:movie).permit(:title, reviews_attributes: %i[rating content user_id])
+  end
+
+  def find_movie
+    @movie = Movie.find_by_id(params[:id])
   end
 end
