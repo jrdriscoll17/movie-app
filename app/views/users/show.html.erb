@@ -1,1 +1,11 @@
 <h1>Welcome: <%= @user.username %></h1>
+<h2>Here are your reviews:</h2>
+<% @user.reviews.each do |review| %>
+  <h3><%= review.movie.title %></h3>
+  <%= label_tag 'rating', 'Rating:' %>
+  <%= review.rating %><br>
+  <%= label_tag 'content', 'Review' %><br>
+  <%= review.content %><br>
+  <br>
+  <%= button_to 'edit', edit_user_review_path(review.user, review), method: :get %>
+<% end %>

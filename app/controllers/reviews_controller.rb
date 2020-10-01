@@ -8,8 +8,13 @@ class ReviewsController < ApplicationController
   end
 
   def edit
-    # raise params.inspect
     @review = Review.find_by_id(params[:id])
+  end
+
+  def update
+    @review = Review.find_by_id(params[:id])
+    @review.update(review_params)
+    redirect_to user_path(@review.user)
   end
 
   private

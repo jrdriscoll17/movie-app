@@ -1,0 +1,14 @@
+<% @movies.each do |movie| %>
+  <h1><%= movie.title %><br>
+  </h1>
+  <% movie.reviews.each do |review| %>
+    <%= label_tag 'rating', 'Rating:' %>
+    <%= review.rating %><br>
+    <%= label_tag 'content', "Review by: #{review.user.username}" %><br>
+    <%= review.content %><br>
+    <br>
+    <% if review.user == current_user %>
+      <%= button_to 'edit', edit_user_review_path(review.user, review), method: :get %>
+    <% end %>
+  <% end %>
+<% end %>
