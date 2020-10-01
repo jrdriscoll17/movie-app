@@ -1,0 +1,9 @@
+<%= @movie.title %>
+<%= form_for([@movie, @review]) do |f| %>
+  <%# <%= render partial: 'form' locals: {f: f}%>
+  <%= f.label :rating %>
+  <%= f.number_field :rating %><br>
+  <%= f.label :content %>
+  <%= f.text_area :content %>
+  <%= f.submit %>
+<% end %>

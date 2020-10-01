@@ -5,7 +5,9 @@ Rails.application.routes.draw do
     resources :reviews
   end
 
-  resources :movies
+  resources :movies do
+    resources :reviews
+  end
 
   get 'login' => 'session#new'
   post 'login' => 'session#create'

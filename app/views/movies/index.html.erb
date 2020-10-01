@@ -1,6 +1,6 @@
 <% @movies.each do |movie| %>
-  <h1><%= movie.title %><br>
-  </h1>
+  <h1><%= movie.title %></h1>
+  <br>
   <% movie.reviews.each do |review| %>
     <%= label_tag 'rating', 'Rating:' %>
     <%= review.rating %><br>
@@ -8,7 +8,15 @@
     <%= review.content %><br>
     <br>
     <% if review.user == current_user %>
-      <%= button_to 'edit', edit_user_review_path(review.user, review), method: :get %>
+      <%= button_to 'Edit Your Review', edit_user_review_path(review.user, review), method: :get %>
     <% end %>
   <% end %>
+  <% movie.review_ids.each do |review_id| %>
+    <% if !current_user.review_ids.include?(review_id) %>
+      <%= button_to 'Add Review', new_movie_review_path(movie), method: :get %>
+    <% end %>
+  <% end %>
+<% end %>
+<% if current_user %>
+  <%= button_to 'Review New Movie', new_movie_path, method: :get %>
 <% end %>

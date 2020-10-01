@@ -3,10 +3,20 @@ class ReviewsController < ApplicationController
 
   def new
     @review = Review.new
+    @movie = Movie.find_by_id(params[:movie_id])
   end
 
   def create
-    Review.create(review_params)
+    # Remember to add flash message display in users/new view
+    @review = Review.new(review_params)
+    @review.movie_id = params[:movie_id]
+    @review.user_id = current_user.id
+    # byebug
+    if @review.save
+      redirect_to movies_path
+    else
+      render 'new'
+    end
   end
 
   def edit; end
@@ -19,7 +29,7 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:rating, :content)
+    params.require(:review).permit(:rating, :content, :user_id)
   end
 
   def find_review
