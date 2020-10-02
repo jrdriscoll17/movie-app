@@ -14,11 +14,10 @@ class MoviesController < ApplicationController
   end
 
   def create
-    # Remember to add flash message display in users/new view
-    movie = Movie.new(movie_params)
-    movie.reviews.first.user = current_user
-    if movie.save
-      redirect_to movie_path(movie)
+    @movie = Movie.new(movie_params)
+    @movie.reviews.first.user = current_user
+    if @movie.save
+      redirect_to movie_path(@movie)
     else
       render 'new'
     end

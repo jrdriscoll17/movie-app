@@ -5,4 +5,5 @@
   <%= f.label :content %><br>
   <%= f.text_area :content %><br>
   <%= f.submit %>
+  <%= button_to 'delete', user_review_path(@review.user, @review), method: :delete %>
 <% end %>

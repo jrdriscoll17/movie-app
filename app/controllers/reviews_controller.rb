@@ -1,9 +1,11 @@
 class ReviewsController < ApplicationController
-  before_action :find_review, only: %i[edit update]
+  before_action :find_review, only: %i[edit update destroy]
 
   def new
     @review = Review.new
-    @movie = Movie.find_by_id(params[:movie_id])
+    @review.movie = Movie.find_by(params[:movie_id])
+    # byebug
+    # @movie = Movie.find_by_id(params[:movie_id])
   end
 
   def create
@@ -11,7 +13,6 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.movie_id = params[:movie_id]
     @review.user_id = current_user.id
-    # byebug
     if @review.save
       redirect_to movies_path
     else
@@ -24,6 +25,11 @@ class ReviewsController < ApplicationController
   def update
     @review.update(review_params)
     redirect_to user_path(@review.user)
+  end
+
+  def destroy
+    @review.delete
+    redirect_to movies_path
   end
 
   private
