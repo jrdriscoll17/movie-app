@@ -7,4 +7,6 @@ class Movie < ApplicationRecord
   validates :title, presence: true, uniqueness: true
 
   accepts_nested_attributes_for :reviews
+
+  scope :with_title, ->(title) { where('title = ?', title) }
 end

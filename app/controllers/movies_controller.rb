@@ -5,7 +5,11 @@ class MoviesController < ApplicationController
   before_action :find_movie, only: %i[show edit update destroy]
 
   def index
-    @movies = Movie.all
+    @movies = if !params[:title].blank?
+                Movie.with_title(params[:title])
+              else
+                Movie.all
+              end
   end
 
   def new

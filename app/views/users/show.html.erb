@@ -2,5 +2,5 @@
 <h2>Here are your reviews:</h2>
 <% @user.reviews.each do |review| %>
   <h3><%= review.movie.title %></h3>
-  <%= render partial: 'movies/movie_show' locals: {review: review}%>
+  <%= render partial: 'movies/movie_show', locals: {review: review} %>
 <% end %>
