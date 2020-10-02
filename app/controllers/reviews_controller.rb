@@ -4,12 +4,9 @@ class ReviewsController < ApplicationController
   def new
     @review = Review.new
     @review.movie = Movie.find_by(params[:movie_id])
-    # byebug
-    # @movie = Movie.find_by_id(params[:movie_id])
   end
 
   def create
-    # Remember to add flash message display in users/new view
     @review = Review.new(review_params)
     @review.movie_id = params[:movie_id]
     @review.user_id = current_user.id
@@ -23,8 +20,11 @@ class ReviewsController < ApplicationController
   def edit; end
 
   def update
-    @review.update(review_params)
-    redirect_to user_path(@review.user)
+    if @review.update(review_params)
+      redirect_to user_path(@review.user)
+    else
+      render 'edit'
+    end
   end
 
   def destroy
