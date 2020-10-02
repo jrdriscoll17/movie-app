@@ -1,10 +1,4 @@
 <h1><%= @movie.title %></h1>
 <% @movie.reviews.each do |review| %>
-  <%= label_tag 'rating:', 'Rating:' %>
-  <%= review.rating %><br>
-  <%= label_tag 'content:', "Review by: #{review.user.username}" %><br>
-  <%= review.content %>
-  <% if review.user == current_user %>
-    <%= button_to 'edit', edit_user_review_path(review.user, review), method: :get %>
-  <% end %>
+  <%= render partial: 'movie_show' locals: {review: review}%>
 <% end %>
