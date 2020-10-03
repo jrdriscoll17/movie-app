@@ -1,3 +1,5 @@
-<% errors.full_messages.each do |m| %>
-  <li><%=m%></li>
+<% if errors != [] %>
+  <% errors.full_messages.each do |m| %>
+    <li><%=m%></li>
+  <% end %>
 <% end %>

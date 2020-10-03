@@ -12,4 +12,6 @@ Rails.application.routes.draw do
   get 'login' => 'session#new'
   post 'login' => 'session#create'
   post 'logout' => 'session#destroy'
+
+  match '/auth/:provider/callback', to: 'session#create', via: %i[get post]
 end
