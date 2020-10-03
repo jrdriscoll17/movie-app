@@ -1,4 +1,4 @@
 <h1><%= @movie.title %></h1>
 <% @movie.reviews.each do |review| %>
-  <%= render partial: 'movie_show' locals: {review: review}%>
+  <%= render partial: 'movie_show', locals: {review: review}%>
 <% end %>

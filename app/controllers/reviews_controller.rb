@@ -5,7 +5,8 @@ class ReviewsController < ApplicationController
 
   def new
     @review = Review.new
-    @review.movie = Movie.find_by(params[:movie_id])
+
+    @review.movie = Movie.find_by(id: params[:movie_id])
   end
 
   def create

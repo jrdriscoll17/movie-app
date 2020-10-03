@@ -16,11 +16,11 @@
       <%= button_to 'Edit Your Review', edit_user_review_path(review.user, review), method: :get %>
     <% end %>
   <% end %>
-  <% if movie.review_ids.empty? %>
+  <% if current_user && movie.review_ids.empty? %>
     <%= button_to 'Add Review', new_movie_review_path(movie), method: :get %>
   <% else %>
     <% movie.review_ids.each do |review_id| %>
-      <% if !current_user.review_ids.include?(review_id) %>
+      <% if current_user && !current_user.review_ids.include?(review_id) %>
         <%= button_to 'Add Review', new_movie_review_path(movie), method: :get %>
       <% end %>
     <% end %>
