@@ -1,6 +1,6 @@
-# Movie MVC
+# Movie App
 
-This app will allow users to add movies to their profile with a title, genres, and up to three actors. These movies can then be viewd and updated on their profile page. User's movies will aslo be visible on the movies page to all users, however only the user who created the movie will be allowed to edit or remove the movie. The genres and actors pages allow users to view movies by genre or actor respectively.
+This app will allow users to add movies to their profile with a title and review that movie. These movie's reviews can then be viewed and updated by that user. User's movies will aslo be visible on the movies page to all users, however only the user who created the movie will be allowed to edit or remove the reviews.
 
 ## Summary
 
@@ -19,21 +19,17 @@ your local machine for development and testing purposes.
 
 2. Change directories to where you installed the repo
 
-   `cd your_install_path/movie-mvc`
+   `cd your_install_path/movie-app`
 
 3. Run migrations
 
-   `rake db:migrate`
+   `rails db:migrate`
 
-4. Seed database with required info
+4. Start up the rails server
 
-   `rake db:seed`
+   `rails s`
 
-5. Run shotgun
-
-   `shotgun`
-
-6. Navigate to your local url in your browser: localhost:9393
+5. Navigate to your local url in your browser: localhost:3000
 
 ## Authors
 
