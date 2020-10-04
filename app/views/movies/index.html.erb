@@ -18,12 +18,8 @@
   <% end %>
   <% if current_user && movie.review_ids.empty? %>
     <%= button_to 'Add Review', new_movie_review_path(movie), method: :get %>
-  <% else %>
-    <% movie.review_ids.each do |review_id| %>
-      <% if current_user && !current_user.review_ids.include?(review_id) %>
-        <%= button_to 'Add Review', new_movie_review_path(movie), method: :get %>
-      <% end %>
-    <% end %>
+  <% elsif current_user && !current_user.review_ids.any?{ |i| movie.review_ids.include?(i) } %>
+    <%= button_to 'Add Review', new_movie_review_path(movie), method: :get %>
   <% end %>
 <% end %>
 <% if current_user %>
