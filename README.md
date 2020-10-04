@@ -1,24 +1,41 @@
-# README
+# Movie MVC
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This app will allow users to add movies to their profile with a title, genres, and up to three actors. These movies can then be viewd and updated on their profile page. User's movies will aslo be visible on the movies page to all users, however only the user who created the movie will be allowed to edit or remove the movie. The genres and actors pages allow users to view movies by genre or actor respectively.
 
-Things you may want to cover:
+## Summary
 
-* Ruby version
+- [Getting Started](#getting-started)
+- [Authors](#authors)
+- [License](#license)
 
-* System dependencies
+## Getting Started
 
-* Configuration
+These instructions will get you a copy of the project up and running on
+your local machine for development and testing purposes.
 
-* Database creation
+### Installing
 
-* Database initialization
+1. Fork and clone this repository
 
-* How to run the test suite
+2. Change directories to where you installed the repo
 
-* Services (job queues, cache servers, search engines, etc.)
+   `cd your_install_path/movie-mvc`
 
-* Deployment instructions
+3. Run migrations
 
-* ...
+   `rake db:migrate`
+
+4. Seed database with required info
+
+   `rake db:seed`
+
+5. Run shotgun
+
+   `shotgun`
+
+6. Navigate to your local url in your browser: localhost:9393
+
+## Authors
+
+- **Jake Driscoll** -
+  [jrdriscoll17](https://github.com/jrdriscoll17)
